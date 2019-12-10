@@ -71,9 +71,13 @@ class Extract:
         df = pd.DataFrame(json_tweets)
         return df
     
-    def write_tweets(self, df):        
-        csv_name = '{}/files/tweets.csv'.format(self.files_dir)
-        df.to_csv(csv_name, sep='\t')
+    def write_tweets(self, df, name, sep):      
+        csv_name = '{}/files/{}.csv'.format(self.files_dir, name)
+        df.to_csv(csv_name, sep=sep)
+
+    def write_tweets_json(self, df, name):
+        json_name = '{}/files/{}.json'.format(self.files_dir, name)
+        df.to_json(json_name, orient='columns')
 
     def get_csv(self, name, sep):
         csv_name = '{}/files/{}.csv'.format(self.files_dir,name)

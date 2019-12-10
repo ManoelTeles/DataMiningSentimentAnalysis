@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
     # # tweets = ext.get_OldTweets()
     # # df_tweets = ext.mount_df_tweets(tweets)
-    # # ext.write_tweets(df_tweets)    
+    # # ext.write_tweets(df_tweets, 'tweets', '\t')    
 
     '''
         Analise de Sentimento - Limpeza
@@ -59,10 +59,12 @@ if __name__ == '__main__':
     ])
     pipeline.fit(msg_train,label_train)
     predictions = pipeline.predict(msg_test)
-    sent.get_df_predicitions(test_tweets, predictions)
+    df_predicitions = sent.get_df_predicitions(test_tweets, predictions)
+    df_predicitions.drop(columns=['Unnamed: 0', 'geo'], inplace=True)
+    ext.write_tweets(df_predicitions, 'predicitions', ',') 
 
     print(predictions)
-    print(test_tweets)
+    print(df_predicitions)
     print ('\n')
     print(classification_report(predictions,label_test))
     print ('\n')
