@@ -73,7 +73,7 @@ class Extract:
     
     def write_tweets(self, df, name, sep):      
         csv_name = '{}/files/{}.csv'.format(self.files_dir, name)
-        df.to_csv(csv_name, sep=sep)
+        df.to_csv(csv_name, sep=sep, index=False)
 
     def write_tweets_json(self, df, name):
         json_name = '{}/files/{}.json'.format(self.files_dir, name)

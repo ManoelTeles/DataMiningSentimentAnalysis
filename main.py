@@ -30,16 +30,12 @@ if __name__ == '__main__':
     ext.DateEnd = "2019-11-30"
     ext.QtyTweets = 20
 
-    # # tweets = ext.get_OldTweets()
-    # # df_tweets = ext.mount_df_tweets(tweets)
-    # # ext.write_tweets(df_tweets, 'tweets', '\t')    
+    tweets = ext.get_OldTweets()
+    df_tweets = ext.mount_df_tweets(tweets)
+    ext.write_tweets(df_tweets, 'tweets', '\t')    
 
-    '''
-        Analise de Sentimento - Limpeza
-    '''
     sent = sentimentAnalysis.SentimentAnalysis()
-
-    train_tweets = ext.get_csv('tweets_train2', ';')
+    train_tweets = ext.get_csv('tweets_train3_balanceado', ';')
     test_tweets = ext.get_csv('tweets', '\t')
     
     train_tweets = train_tweets[['sentiment','text']]
